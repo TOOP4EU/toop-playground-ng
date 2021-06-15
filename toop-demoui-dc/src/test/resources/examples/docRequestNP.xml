@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This work is protected under copyrights held by the members of the
+    TOOP Project Consortium as indicated at
+    http://wiki.ds.unipi.gr/display/TOOP/Contributors
+    (c) 2018-2021. All rights reserved.
+
+    This work is licensed under the EUPL 1.2.
+
+     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+    by the European Commission - subsequent versions of the EUPL
+    (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+
+            https://joinup.ec.europa.eu/software/page/eupl
+
+-->
+<query:QueryRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:4.0" xmlns:spi="urn:oasis:names:tc:ebxml-regrep:xsd:spi:4.0" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:4.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:4.0" xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:4.0" id="52707294-5d76-4c8c-a311-035e18dc16eb">
+  <rim:Slot name="SpecificationIdentifier">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>SpecID</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="IssueDateTime">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:DateTimeValueType">
+      <rim:Value>2020-05-12T17:46:58.350</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="Procedure">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:InternationalStringValueType">
+      <rim:Value>
+        <rim:LocalizedString xml:lang="en" value="GBM Procedure" />
+      </rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="ConsentToken">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>MTExMDEwMTAxMDEwMTAwMDExMTAxMDE=</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="DatasetIdentifier">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>DATASETIDENTIFIER</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="DataConsumer">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+      <cagv:Agent xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:regorg="http://www.w3.org/ns/regorg#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:cac="https://semic.org/sa/cv/common/cac-2.0.0#" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#">
+        <cbc:id schemeID="VAT">DE730757727</cbc:id>
+              <cbc:name>aCompanyName</cbc:name>
+              <cagv:location>
+          <locn:address xsi:type="cac:AddressType">
+            <locn:fullAddress>Prince Street 15</locn:fullAddress>
+                      <locn:thoroughfare>Prince Street</locn:thoroughfare>
+                      <locn:locatorDesignator>15</locn:locatorDesignator>
+                      <locn:postName>Liverpool</locn:postName>
+                      <locn:adminUnitLevel1>GB</locn:adminUnitLevel1>
+                      <locn:postCode>15115</locn:postCode>
+          </locn:address>
+        </cagv:location>
+      </cagv:Agent>
+    </rim:SlotValue>
+  </rim:Slot>
+  <query:ResponseOption />
+  <query:Query queryDefinition="DocumentQuery">
+    <rim:Slot name="NaturalPerson">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+        <cva:CorePerson xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents">
+          <cvb:PersonID schemeID="VAT">1212</cvb:PersonID>
+                  <cvb:PersonFamilyName>Sabatini</cvb:PersonFamilyName>
+                  <cvb:PersonGivenName>Bianca</cvb:PersonGivenName>
+                  <cvb:PersonGenderCode>F</cvb:PersonGenderCode>
+                  <cvb:PersonBirthName>Bianca Sabatini</cvb:PersonBirthName>
+                  <cvb:PersonBirthDate>1998-01-01</cvb:PersonBirthDate>
+                  <cva:PersonPlaceOfBirthCoreLocation>
+            <cva:LocationCoreAddress>
+              <cvb:AddressPostName>London</cvb:AddressPostName>
+            </cva:LocationCoreAddress>
+          </cva:PersonPlaceOfBirthCoreLocation>
+                  <cva:PersonCoreAddress>
+            <cvb:AddressFullAddress>Prince Street 15</cvb:AddressFullAddress>
+                      <cvb:AddressThoroughfare>Prince Street</cvb:AddressThoroughfare>
+                      <cvb:AddressLocatorDesignator>15</cvb:AddressLocatorDesignator>
+                      <cvb:AddressPostName>Liverpool</cvb:AddressPostName>
+                      <cvb:AddressAdminUnitLocationOne>GB</cvb:AddressAdminUnitLocationOne>
+                      <cvb:AddressPostCode>15115</cvb:AddressPostCode>
+          </cva:PersonCoreAddress>
+        </cva:CorePerson>
+      </rim:SlotValue>
+    </rim:Slot>
+      <rim:Slot name="AuthorizedRepresentative">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+        <cva:CorePerson xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents">
+          <cvb:PersonID schemeID="VAT">1515</cvb:PersonID>
+                  <cvb:PersonFamilyName>Smith</cvb:PersonFamilyName>
+                  <cvb:PersonGivenName>Mark</cvb:PersonGivenName>
+                  <cvb:PersonGenderCode>M</cvb:PersonGenderCode>
+                  <cvb:PersonBirthName>Mark Smith</cvb:PersonBirthName>
+                  <cvb:PersonBirthDate>1990-01-01</cvb:PersonBirthDate>
+                  <cva:PersonCoreAddress>
+            <cvb:AddressFullAddress>Some other 15</cvb:AddressFullAddress>
+                      <cvb:AddressThoroughfare>Some other</cvb:AddressThoroughfare>
+                      <cvb:AddressLocatorDesignator>15</cvb:AddressLocatorDesignator>
+                      <cvb:AddressPostName>Liverpool</cvb:AddressPostName>
+                      <cvb:AddressAdminUnitLocationOne>GB</cvb:AddressAdminUnitLocationOne>
+                      <cvb:AddressPostCode>15115</cvb:AddressPostCode>
+          </cva:PersonCoreAddress>
+        </cva:CorePerson>
+      </rim:SlotValue>
+    </rim:Slot>
+      <rim:Slot name="DistributionRequestList">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:CollectionValueType" collectionType="urn:oasis:names:tc:ebxml-regrep:CollectionType:Set:SortedSet">
+        <rim:Element xsi:type="rim:AnyValueType">
+          <dcat:distribution xmlns:spdx="spdx:xsd::1.0" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:regorg="http://www.w3.org/ns/regorg#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:odrl="http://www.w3.org/ns/odrl/2/" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:cccev="https://semic.org/sa/cv/cccev-2.0.0#" xmlns:cbc="https://semic.org/sa/cv/common/cbc-2.0.0#" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:cac="https://semic.org/sa/cv/common/cac-2.0.0#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:dcat="http://data.europa.eu/r5r/">
+            <dcat:accessURL />
+                      <dct:format>UNSTRUCTURED</dct:format>
+                      <dcat:mediaType>application/pdf</dcat:mediaType>
+          </dcat:distribution>
+        </rim:Element>
+      </rim:SlotValue>
+    </rim:Slot>
+  </query:Query>
+</query:QueryRequest>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This work is protected under copyrights held by the members of the
+    TOOP Project Consortium as indicated at
+    http://wiki.ds.unipi.gr/display/TOOP/Contributors
+    (c) 2018-2021. All rights reserved.
+
+    This work is licensed under the EUPL 1.2.
+
+     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+    by the European Commission - subsequent versions of the EUPL
+    (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+
+            https://joinup.ec.europa.eu/software/page/eupl
+
+-->
+<query:QueryRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:4.0" xmlns:spi="urn:oasis:names:tc:ebxml-regrep:xsd:spi:4.0" xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:4.0" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:4.0" xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:4.0" id="298fc858-6bb1-4472-b5fc-39e0f2250dc3">
+  <rim:Slot name="SpecificationIdentifier">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>toop-edm:v2.1</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="IssueDateTime">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:DateTimeValueType">
+      <rim:Value>2020-08-24T12:52:15.399</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="Procedure">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:InternationalStringValueType">
+      <rim:Value>
+        <rim:LocalizedString xml:lang="en" value="GBM" />
+      </rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="ConsentToken">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>MTExMDEwMTAxMDEwMTAwMDExMTAxMDE=</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="DatasetIdentifier">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:StringValueType">
+      <rim:Value>FINANCIAL_RECORD_TYPE</rim:Value>
+    </rim:SlotValue>
+  </rim:Slot>
+  <rim:Slot name="DataConsumer">
+    <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+      <cagv:Agent xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:regorg="http://www.w3.org/ns/regorg#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:org="http://www.w3.org/ns/org#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:csdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:csbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" xmlns:csac="https://semic.org/sa/cv/common/cac-2.0.0#" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#">
+        <csbc:id schemeID="VAT">PF730757727</csbc:id>
+              <csbc:name>Freedonia Data Consumer System</csbc:name>
+              <cagv:location>
+          <locn:address>
+            <locn:fullAddress>FreedoniaStreet 55, 11155, FreedoniaTown, PF</locn:fullAddress>
+                      <locn:thoroughfare>FreedoniaStreet</locn:thoroughfare>
+                      <locn:locatorDesignator>55</locn:locatorDesignator>
+                      <locn:postName>FreedoniaTown</locn:postName>
+                      <locn:adminUnitLevel1>PF</locn:adminUnitLevel1>
+                      <locn:postCode>11134</locn:postCode>
+          </locn:address>
+        </cagv:location>
+      </cagv:Agent>
+    </rim:SlotValue>
+  </rim:Slot>
+  <query:ResponseOption returnType="LeafClassWithRepositoryItem" />
+  <query:Query queryDefinition="DocumentQuery">
+    <rim:Slot name="LegalPerson">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+        <cva:CoreBusiness xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents">
+          <cvb:LegalEntityLegalID schemeID="EIDAS">1665469009</cvb:LegalEntityLegalID>
+                  <cvb:LegalEntityID schemeID="VATRegistration">1665469009</cvb:LegalEntityID>
+                  <cvb:LegalEntityLegalName>1665469009</cvb:LegalEntityLegalName>
+        </cva:CoreBusiness>
+      </rim:SlotValue>
+    </rim:Slot>
+      <rim:Slot name="AuthorizedRepresentative">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:AnyValueType">
+        <cva:CorePerson xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents">
+          <cvb:PersonID schemeID="EIDAS">MirkoSchmitz</cvb:PersonID>
+                  <cvb:PersonFamilyName>MirkoSchmitz</cvb:PersonFamilyName>
+                  <cvb:PersonGivenName>MirkoSchmitz</cvb:PersonGivenName>
+                  <cvb:PersonGenderCode>F</cvb:PersonGenderCode>
+                  <cvb:PersonBirthName>MirkoSchmitz</cvb:PersonBirthName>
+                  <cvb:PersonBirthDate>2020-08-24</cvb:PersonBirthDate>
+                  <cva:PersonPlaceOfBirthCoreLocation>
+            <cva:LocationCoreAddress>
+              <cvb:AddressPostName>MirkoSchmitz</cvb:AddressPostName>
+            </cva:LocationCoreAddress>
+          </cva:PersonPlaceOfBirthCoreLocation>
+        </cva:CorePerson>
+      </rim:SlotValue>
+    </rim:Slot>
+      <rim:Slot name="DistributionRequestList">
+      <rim:SlotValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rim:CollectionValueType" collectionType="urn:oasis:names:tc:ebxml-regrep:CollectionType:Set:SortedSet">
+        <rim:Element xsi:type="rim:AnyValueType">
+          <dcat:distribution xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:spdx="spdx:xsd::1.0" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:regorg="http://www.w3.org/ns/regorg#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:odrl="http://www.w3.org/ns/odrl/2/" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:csdt="https://semic.org/sa/cv/common/dataTypes-2.0.0#" xmlns:csbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#" xmlns:csac="https://semic.org/sa/cv/common/cac-2.0.0#" xmlns:cccev="https://semic.org/sa/cv/cccev-2.0.0#" xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:dcat="http://data.europa.eu/r5r/">
+            <dcat:accessURL />
+                      <dct:format>UNSTRUCTURED</dct:format>
+                      <dcat:mediaType>application/pdf</dcat:mediaType>
+          </dcat:distribution>
+        </rim:Element>
+      </rim:SlotValue>
+    </rim:Slot>
+  </query:Query>
+</query:QueryRequest>

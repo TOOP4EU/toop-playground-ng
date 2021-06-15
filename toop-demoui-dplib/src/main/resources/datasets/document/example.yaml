@@ -1,0 +1,48 @@
+#
+# This work is protected under copyrights held by the members of the
+# TOOP Project Consortium as indicated at
+# http://wiki.ds.unipi.gr/display/TOOP/Contributors
+# (c) 2018-2021. All rights reserved.
+#
+# This work is licensed under the EUPL 1.2.
+#
+#  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+#
+# Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+# by the European Commission - subsequent versions of the EUPL
+# (the "Licence");
+# You may not use this work except in compliance with the Licence.
+# You may obtain a copy of the Licence at:
+#
+#         https://joinup.ec.europa.eu/software/page/eupl
+#
+
+legalPersonID: LP12345
+description: A small description with various words.
+title: An example document
+attachmentLocation: datasets/document/attachments/dummy.pdf
+attachmentCid: f55f1971-5e92-5804-acf7-16668709af5f
+distribution:
+  documentURI: www.example.com/document.pdf
+  documentDescription: Example PDF
+  documentType: application/pdf
+ids:
+  - f55f1971-5e92-5804-acf7-16668709af5f
+  - DOC-550
+issued: 2020-03-02T03:03
+language: EN
+lastModified: 2020-03-02T03:03
+validFrom: 2020-03-02T03:03
+validTo: 2021-03-02T03:03
+repositoryItemRef:
+  link: www.example.com/document.pdf
+  title: Example PDF
+creator:
+  id: 1234
+  idScheme: VATRegistration
+  name: Elonian Authority
+  postName: ElonianPostName
+qualifiedRelation:
+  - description: Legal Description
+    title: Legal title
+    id: qwerty

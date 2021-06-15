@@ -1,0 +1,154 @@
+/**
+ * This work is protected under copyrights held by the members of the
+ * TOOP Project Consortium as indicated at
+ * http://wiki.ds.unipi.gr/display/TOOP/Contributors
+ * (c) 2018-2021. All rights reserved.
+ *
+ * This work is licensed under the EUPL 1.2.
+ *
+ *  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+ *
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+ * by the European Commission - subsequent versions of the EUPL
+ * (the "Licence");
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ *
+ *         https://joinup.ec.europa.eu/software/page/eupl
+ */
+/*
+   CSS styling examples for the Vaadin app.
+   Visit https://vaadin.com/docs/flow/theme/theming-overview.html and
+   https://vaadin.com/themes/lumo for more information.
+*/
+
+/* Example: CSS class name to center align the content . */
+
+/*html {*/
+/*  background: rgb(239,248,255);*/
+/*  background: linear-gradient(90deg, rgba(239,248,255,1) 0%, rgba(208,233,255,1) 42%, rgba(234,251,255,1) 100%);*/
+/*}*/
+
+html {
+    background: rgb(241, 249, 255);
+    background: linear-gradient(90deg, rgba(241, 249, 255, 1) 0%, rgba(247, 251, 255, 1) 42%, rgba(247, 254, 255, 1) 100%);
+    --lumo-font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --lumo-line-height-m: 1.4;
+    --lumo-line-height-s: 1.2;
+    --lumo-line-height-xs: 1.1;
+    /*--lumo-border-radius: 0.75em;*/
+    --lumo-shade-5pct: rgba(11, 79, 131, 0.05);
+    --lumo-shade-10pct: rgba(11, 79, 131, 0.1);
+    --lumo-shade-20pct: rgba(11, 79, 131, 0.2);
+    --lumo-shade-30pct: rgba(11, 79, 131, 0.3);
+    --lumo-shade-40pct: rgba(11, 79, 131, 0.4);
+    --lumo-shade-50pct: rgba(11, 79, 131, 0.5);
+    --lumo-shade-60pct: rgba(11, 79, 131, 0.6);
+    --lumo-shade-70pct: rgba(11, 79, 131, 0.7);
+    --lumo-shade-80pct: rgba(11, 79, 131, 0.8);
+    --lumo-shade-90pct: rgba(11, 79, 131, 0.9);
+    --lumo-shade: hsl(206, 84%, 28%);
+    --lumo-header-text-color: hsl(206, 92%, 43%);
+}
+
+.box {
+    margin: 10px;
+    box-shadow: 0 0 0 2px var(--lumo-contrast-10pct);
+    /*border-radius: var(--lumo-border-radius);*/
+    background-color: white;
+}
+
+.centered-content {
+    margin: 0 auto;
+    max-width: 250px;
+}
+
+.header {
+    background: rgb(12, 39, 60);
+    background: linear-gradient(90deg, rgba(12, 39, 60, 1) 6%, rgba(30, 74, 144, 1) 42%, rgba(77, 100, 179, 1) 100%);
+    color: white;
+    display: block;
+    font-weight: bold;
+    font-size: xx-large;
+    padding-left: 20px;
+    text-align: left;
+    line-height: 180%;
+}
+
+h2 {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.h2-error {
+    color: #ff5f57;
+}
+
+.content {
+    display: block;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 0 2px var(--lumo-contrast-10pct);
+    /*border-radius: var(--lumo-border-radius);*/
+    width: 95%;
+    background-color: white;
+}
+
+.queryContent, .conceptContent, .dataConsumer, .conceptSelectionBox, .dataConsumerBox, .dataProviderBox, .conceptBox, .uploadBox, .requestStatusBox, .documentBox, .errorBox {
+    display: block;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 0 2px var(--lumo-contrast-10pct);
+    /*border-radius: var(--lumo-border-radius);*/
+    width: 95%;
+    background-color: white;
+}
+
+.address {
+    display: block;
+    margin: 10px;
+    width: 95%;
+    background-color: white;
+}
+
+
+.queryBox {
+    display: block;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 0 2px var(--lumo-contrast-10pct);
+    /*border-radius: var(--lumo-border-radius);*/
+    width: 90% !important;
+    background-color: white;
+    align-items: stretch;
+}
+
+.DSDQueryBox {
+    display: block;
+    justify-content: space-between;
+    /*flex: 1 1 0;*/
+    padding: 20px;
+    margin: 20px 0 20px 0;
+    box-shadow: 0 0 0 2px var(--lumo-contrast-10pct);
+    /*border-radius: var(--lumo-border-radius);*/
+    width: 95%;
+    background-color: white;
+}
+
+
+.createMsgContent .responsePage {
+    display: block;
+    padding: 20px;
+}
+
+.distributionSelectionBox {
+    display: block;
+    width: 90% !important;
+
+}
+
+/*.dataConsumer {*/
+/*  display: block;*/
+/*  padding: 20px;*/
+/*}*/
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This work is protected under copyrights held by the members of the
+    TOOP Project Consortium as indicated at
+    http://wiki.ds.unipi.gr/display/TOOP/Contributors
+    (c) 2018-2021. All rights reserved.
+
+    This work is licensed under the EUPL 1.2.
+
+     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+    by the European Commission - subsequent versions of the EUPL
+    (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+
+            https://joinup.ec.europa.eu/software/page/eupl
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>eu.toop</groupId>
+    <artifactId>toop-playground-ng</artifactId>
+    <version>2.1.2-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>toop-demoui-dpweb</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity-engine-core</artifactId>
+      <version>2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>eu.toop</groupId>
+      <artifactId>toop-demoui-dplib</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.javalin</groupId>
+      <artifactId>javalin</artifactId>
+      <version>3.13.0</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <configuration>
+          <mainClass>eu.toop.playground.demoui.dpweb.DpApp</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>eu.toop.playground.demoui.dpweb.DpApp</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

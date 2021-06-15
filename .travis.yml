@@ -1,0 +1,60 @@
+dist: xenial
+sudo: required
+language: java
+install:
+- mvn install -Pproduction -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U
+cache:
+  directories:
+  - "$HOME/.m2"
+branches:
+  only:
+  - develop
+  - master
+jobs:
+  include:
+  - stage: test
+    jdk: openjdk8
+    script:
+    - mvn test -B -P coverage,production
+    after_success:
+    - mvn deploy --settings deploy-settings.xml -DskipTests=true -B -Pproduction
+    - bash <(curl -s https://codecov.io/bash)
+  - stage: test
+    jdk: openjdk11
+    script:
+    - mvn test -B sonar:sonar -P production
+before_deploy:
+- cd toop-demoui-dc
+- mvn clean package -Pproduction
+- cd ..
+- openssl aes-256-cbc -K $encrypted_db2095f63ba3_key -iv $encrypted_db2095f63ba3_iv
+  -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
+- echo -e "Host ${DEPLOY_HOST_ELONIA}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host ${DEPLOY_HOST_FREEDONIA}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash travis-deploy.sh
+  on:
+    branch: master
+env:
+  global:
+  - SONATYPE_USERNAME=ph@phloc.com
+  - secure: UnqoyMD2UtllV68NBbXuK1Le9hX7prO8yKQBQdHUtDwtsgWH7v9WDBpJhrcZ5uqy3DlBS1dbqB5wdQa5adGG7NtnCKLrmMFsPa+IO+KzVHABO7pM2eszibXHtLBwWdIZNjucoypebvkdZf6wp/ZyiiSxDghLjscdLBYNWb83XUYLiKDB7po49X90WzQEzEpQPOKURCqE5lv0wKx+LHCy3vW8oN4fBtyQ8n0GZoTF3CzhvAJTwIDMqIDADi/7AZL61KGUzONd+YuTcB81Zz5FxSCrqjLWewfFfxoXzkaQnzKqn+xBY4c407V01cAlLugVEnZ6Sjowg/0Nkc0DvcqQp6FSNg+cv9NeN4PivMpgh9TZ9wuSxSYhv6dICHXSISBuKDbWagR0Z/AZl0moycPfBec+m8IFhiCNFk98GZdbakj48AF57siRM2rChTiCscv+/Ow/7SH7JoIUTpYnrX0O8+RN1rWDVgMRMfOUFnlubeykmfiXXSxD3q6dE3nIEiHwfzzlRk8wOMkwvvzjoDnQYYY2af9tyhoKe5a0CfXFTM6N1l+rXj5X7S1ml4uosdSXz1Bhu2MHOiOZLET1QiR0A+jQ3DUOXLGHciyfkq9uggayPqFk3ajCi7XXGsR79QYcXQO0Sz8hUo/uG3LBFjciBaUV92za/pZCH7bySOgOiCo=
+  - secure: mQ8rN5W7cN4/plIW954z+1HtNa1E0/FgITshmr7ffeen6Pr7Ux7dt8eCH8C7bYUu7k25JvMX8EyvO58DFhESPsKwXQwpFLZu6kie1+mPk0n0YNBA6RqCY61u0A0yf1WDQvPm5sxVglnpILGu6GMuoR6vnnHD2jVpKIvxzPu4Rf9ywCSW2COVoeUmGench5vahUVSZ4P/UhW37VPBHAXA+N9T9c0MfjeZ7Lf7AcPaccHTouAaAqxlSl17nKDRZoX9GEhfn/+ntXacjmZ8x6ayKdFv8/yxAo7FpYiU2lHJ7vAN7jANMKAL0Wftszzt6cD28uG8Sl414z38BmsF0rd8tLD9AMBChDZGFOdn2uy6W5gpF9oo+OB2wpxtrRkcdHuBIIat6nWZit0bkuBcHiFbjOxJqyqasuFRBHOaqtv7U67oxk44tQTDbTz96G7Cmmc3keArA+AMhTkiJgZtzT7K8s1vpnw1jgcUewj2xexU2x4YO8E4LSC5MeJ+Vfe+3EkGjkQIE6l8V6dW7xlNmCX2jWrPg0ZjL2xpTD9GBS/5qv9MXoZ60C+p5qKh6acAlGJEVbOC3TSEr+OCrmttSGmnsCitFtJtGdw/GZSVwfioQcl7ULdCakMjbb1eyVVLrR0iTnKy4nHOsUbo0+pVcjZ21uRU6C489X6nEQAxmFZ7Ql8=
+  - secure: ZkX6OIz3NSQ2itzC5klQ31GHbIS9uJ1VKfauYHzD4O/Kz900SdbsBYz3Qjhd6aHh1FJ3v1Lf15sAt4Ia7xQL36r8tYRGFZ4EOBga8FiNbnCjF6OeicccM6qrg06AQ3Qleoer5TqmIhLbu31rrxWgDDa3MDmniOKd0EPy8siFDkbx8z12kJfQ9ZhT1vj+3ZKXxOEZ1Cuh2tjy8DBagQ7Vzftw7vbys/lY/HhgeBMTtlWI23Bwo8zyjbY57li83l0c1bw8AYwo8IaHcXzyEdxm5sTYRrfPAJt9mqp/4N18uZDywibYu193CVS+kOZ4zOkbmMt1Xn029xgJRcr8s/RDSY4/wYlxptEF/nZ1+fCWeqsc+Zy/4HJFD85bv8DwI5xW7g+1hi5OcTQvKgGaCYhF7DGHzKCa3IEMgqLSDWaFGMMDglAyS2iPq7TZRLEfong1szeDY75G0qfibVSZilIa8zIoEMMrbe6uXXNFcgZQ6xFo9P7MGli4Qm6U5yZWVirPhsV65LWG0cd6wzFfmoar5BjGeCeu70rvmYMfPR+s1ONbCGNtdr+BkdPPeSkuj4jRuUO68e3jCKUag4YQh5u/g4y97WcO+KXScwTxiu0zyPBFNxTb9zpTkzrGn5Z/r6jYJXj2GwbCQ8WVhSJHkkp3YOOya55rjmAHeySH4mJQRCY=
+  - secure: L0KMmsPV6A9O0pRNjURx/+JlVRft5lBbK/WyUzTWEmr1wwgtgNaZOrI+sWFbbsiafxLcuc0TWlgl6QaR5u+XB8Ou1x96w50sy7rjma74KRhovqRn0In0W+6rVowk4zUxSMvYDTIMzFJkbJ3PF87yCcWxWFE3jix5tIa8Gu/2oZp37XKaxl0YRCUhledG02OYMJeWpafngPi7R4g8zDP2g3sG9uu4wBeNN3m7A9xsW7B0YC4ZwsAJMEur8O65n9GV7tMTBNVtOzurJP/V56B48jOrUgJ6OkmB3M0hvbH5YuxKHxsiDD4h8JqVNmWr0y8rG3s01mXSsVxPElQBA+EJq10740uEa74ogmNgpm0cZ1tnRCYVQRQtT6ocETV5r49UzLygVotKMcK2/DRFDXcw+qobqPeJ7PhHTDyZluR9RRKBTbhluqi8zsTv1oSEKL28Rg8o/p2C0OWbk9yYvfW4wqDxTy9Yc8PYhpA6QDJZiH5BvY7PufmswRbLhkxDryCMKmebOkUUeek1KlVPkd0iYBHWSwVBiS8rspL5ZsC+4230AXekoveGN3CHkbxVQXlhavE7ERazST1Z0PLCSy0RXEBbNf2dPSu3/X/P6eq5iJ4dUif20VL7peB+JQVbBmTl2a9iw+vR4URh8sadnY6KXtBg286uNubsGkAR5xIdBuk=
+  - secure: bk79hpl4boHctK0zvz4TaSIo8JAo/XrZn2kCm+3fWnXOPTMBlvFQLhAXwGYtJMv6AzHy3YjLt2H2v0ZmLmr/hKYB7ZCI8FyXDxzo1Ke8yvapbh2vmfOQylbnK6XjmrIkBOu1KU3xcftXk0+OScmjG7vIZ79jMYpPHRfs8xW7ealQeErnR8GHP8A7wppWr10xlRmubin2c40Qfhw27cxx3dsWAXPeYVdqdP+JpTnWREVzZCSbrWoXaZVaBcA5WpGlWLJoZ7XP4met1jqvFLzrkxZFIujhczUlljvMKTpMxOG+jELdYq3qos/mwbXzdlShDRBfVy5iDLVXtZvujLhqyAdjUXH210TepucnfVWkISMlIb4z0qzZf3Gm6m8JtddXOuFd0GirgI7TWKmpId5QX+7DmfMnuQXTuMR2ID0DG0Bw6YT2wGDWlay1ayJBFngPOL3D/m2mTx+0Q/VknJLB9UWda913iSylcJAJ3Q3g6hwu0ImMPQ031ZQzVn508oZpdr+Sr9JTS43NCrr9c5bESZUMz63ekmCS8GiaA1WdS32yTKk7D7kM4PXRK18LBG3bQzKBmfdaRqC97YWhzxUTAWgs4JFc+VQkTA0JQQ001eM8kOdwDP1lO+TY9Ebpd+ShpMOgfKGgc0+ChEA0VGOSPMr93p2O4BF7wSffGJa/Wi0=
+addons:
+  sonarcloud:
+    organization: toop4eu
+    token:
+      secure: mBmMb2SvPMkM3rZaag6exailU6llKfeJgBmnqzoevzLTYaJzfvrJ81Oq/2xb8b70wi75L6J49KcqEwTDlU8SP+x2+yqtvItvn5D6orlVUSjB2Ku3o57zcG7LKWOjoFJ
+        EkVz+tPChQrXNOOfrNBceyUu/kDVIQ1/uJDagpnVkuC8VTHqadXimxZzgzw8hnuvCDuWQE2o3zS5rUPoAeCR/bU2iy1ztJ5ykV8L6+0UaAEUXMr3Fjapjgw1KRiIMy0kFxpQVadTYb
+        CWhcnpBgtZnc+hQqjjWSHN1LKwo/wd2JU2kYiQtRsAIm4Gd9y47RmVIrq3uXMpGYxQAE2gKHMp74d4tUoCHxYTjzFf6aoUQzBUdUUFwLcCJ4QP+XlAE+D8R1GV9B0gMl3Ji4Gy+8DL
+        CYe5FQ9uzqYZhvixs63s1dDGaU3Rb/J1cyGwWoggXnKu5cXgxpUchCzCl0ieOXDgerb9MWrcyuQzpg5cc6v5PqBZQG8q5jzIigafpBLIPn6KCi0ryJUCu9qpo3Cw7oBAWw20be8yE+
+        MgqRlYZGTZDMLueVa8ncP+MOGwNhQUAyr7IR1/Fot8Q0l+6fQyWwpVJ4Kzs+IbL2aNDXpDYr2CQbAd/DtRoxz7GnqcwBgiL6zMcwQunC0t7NCxfO6oAEnAIxi8p50xAW/zpyHeU5kS
+        VNkM=

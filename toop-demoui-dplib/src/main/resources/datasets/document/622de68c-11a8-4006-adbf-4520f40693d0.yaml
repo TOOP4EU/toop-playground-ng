@@ -1,0 +1,49 @@
+#
+# This work is protected under copyrights held by the members of the
+# TOOP Project Consortium as indicated at
+# http://wiki.ds.unipi.gr/display/TOOP/Contributors
+# (c) 2018-2021. All rights reserved.
+#
+# This work is licensed under the EUPL 1.2.
+#
+#  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+#
+# Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+# by the European Commission - subsequent versions of the EUPL
+# (the "Licence");
+# You may not use this work except in compliance with the Licence.
+# You may obtain a copy of the Licence at:
+#
+#         https://joinup.ec.europa.eu/software/page/eupl
+#
+
+legalPersonID: 1665469009
+legalRepresentativeID: MirkoSchmitz
+description: eProcurement pilot test PDF.
+title: Unbedenklichkeitsbescheinigung der BG mit Angabe der Lohnsummen
+attachmentLocation: datasets/document/attachments/622de68c-11a8-4006-adbf-4520f40693d0.pdf
+attachmentCid: 622de68c-11a8-4006-adbf-4520f40693d0
+distribution:
+  documentURI: "https://www.gbd-test.online/quality-platform/app/dataExchange/showDocument/B506CD21D5B63E8E"
+  documentDescription: Unbedenklichkeitsbescheinigung der BG mit Angabe der Lohnsummen
+  documentType: application/pdf
+ids:
+  - 622de68c-11a8-4006-adbf-4520f40693d0
+  - B506CD21D5B63E8E
+issued: 2019-01-15T03:03
+language: DE
+lastModified: 2019-01-15T03:03
+validFrom: 2019-01-15T03:03
+validTo: 2020-02-15T03:03
+repositoryItemRef:
+  link: "cid:622de68c-11a8-4006-adbf-4520f40693d0"
+  title: Unbedenklichkeitsbescheinigung der BG mit Angabe der Lohnsummen
+creator:
+  id: DE1665468040
+  idScheme: DE167064991
+  name: FG Baulogistik GmbH
+  postName: ElonianPostName
+qualifiedRelation:
+  - description: Legal Description
+    title: Legal title
+    id: qwerty

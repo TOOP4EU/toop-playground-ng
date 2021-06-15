@@ -1,0 +1,171 @@
+#*
+ * This work is protected under copyrights held by the members of the
+ * TOOP Project Consortium as indicated at
+ * http://wiki.ds.unipi.gr/display/TOOP/Contributors
+ * (c) 2018-2021. All rights reserved.
+ *
+ * This work is licensed under the EUPL 1.2.
+ *
+ *  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+ *
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+ * by the European Commission - subsequent versions of the EUPL
+ * (the "Licence");
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ *
+ *         https://joinup.ec.europa.eu/software/page/eupl
+ *#
+#include("/templates/css.vm")
+<div class="card">
+    <div class="header">
+        <h1>Available Datasets</h1>
+    </div>
+    <hr>
+    <h2>General Business Mobility (Concept)</h2>
+    <ul style="list-style-type:none;padding-left: 0;">
+        <div class="accordion" id="accordionConcept" style="background: white">
+            #foreach($conceptDataset in $conceptDatasets)
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#concept$foreach.count">
+                            GBM Dataset $foreach.count - #datasetInfo($conceptDataset)
+                        </button>
+                    </div>
+                    <div id="concept$foreach.count" class="accordion-collapse collapse"
+                         data-bs-parent="#accordionConcept">
+                        <div class="accordion-body">
+                            Concepts:
+                            <ul style="list-style-type:none;">
+                                #foreach($concept in $conceptDataset.concepts)
+                    #conceptInfo($concept)
+                    #end
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
+    </ul>
+    <h2>Document</h2>
+    <ul style="list-style-type:none;padding-left: 0;">
+        <div class="accordion" id="accordionConcept" style="background: white">
+            #foreach($documentDataset in $documentDatasets)
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#document$foreach.count">
+                            Document Dataset $foreach.count - #datasetInfo($documentDataset)
+                        </button>
+                    </div>
+                    <div id="document$foreach.count" class="accordion-collapse collapse"
+                         data-bs-parent="#accordionConcept">
+                        <div class="accordion-body">
+                            <ul style="list-style-type:none;">
+                                #documentInfo($documentDataset)
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
+    </ul>
+</div>
+
+#macro( datasetInfo $dataset )
+    #if($dataset.getNaturalPersonID())
+    <span style="padding-left: 5px">Natural Person ID: <span
+            style="font-weight: bold"> $dataset.getNaturalPersonID() </span></span>
+    #end
+    #if($dataset.getLegalPersonID())
+    <span style="padding-left: 5px">Legal Person ID: <span
+            style="font-weight: bold"> $dataset.getLegalPersonID() </span></span>
+    #end
+    #if($dataset.getLegalRepresentativeID())
+    <span style="padding-left: 5px">Legal Representative ID: <span
+            style="font-weight: bold"> $dataset.getLegalRepresentativeID() </span></span>
+    #end
+#end
+
+#macro( conceptInfo $concept )
+    #if($concept.getTextValue())
+    <tr>
+        <th scope="row">$concept.getName()</th>
+        <td>$concept.getTextValue()</td>
+    </tr>
+    #else
+    <li>Name: <b> $concept.getName() </b></li>
+    <li>Concepts:
+        <div class="container">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($concept in $concept.concepts)
+                #conceptInfo($concept)
+                #end
+                </tbody>
+            </table>
+        </div>
+    </li>
+    #end
+#end
+
+#macro(documentInfo $document)
+<li>Title: <b>$document.title</b></li>
+<li>Description: <b>$document.description</b></li>
+<li>Issued date and time: <b>$document.issued</b></li>
+<li>Language: <b>$document.language</b></li>
+<li>Last modified date and time: <b>$document.lastModified</b></li>
+<li>Valid from: <b>$document.validFrom</b></li>
+<li>Valid to: <b>$document.validTo</b></li>
+<li>Creator:
+    <ul style="list-style-type:none;">
+        <li>ID: <b>$document.creator.id</b></li>
+        <li>ID Scheme: <b>$document.creator.idScheme</b></li>
+        <li>Name: <b>$document.creator.name</b></li>
+        <li>Location: <b>$document.creator.postName</b></li>
+    </ul>
+</li>
+<li>IDs:
+    <ul style="list-style-type:none;">
+        #foreach($id in $document.IDs)
+            <li><b>$id</b></li>
+        #end
+    </ul>
+</li>
+<li>Qualified Relation:
+    #foreach($qualified in $document.qualifiedRelation)
+        <ul style="list-style-type:none;">
+            <li>Title: <b>$qualified.title</b></li>
+            <li>Description: <b>$qualified.description</b></li>
+            <li>ID: <b>$qualified.ID</b></li>
+        </ul>
+    #end
+</li>
+<li>Document Reference:
+    <ul style="list-style-type:none;">
+        <li>Document URI: <b>$document.distribution.documentURI</b></li>
+        <li>Document Description: <b>$document.distribution.documentDescription</b></li>
+        <li>Document Type: <b>$document.distribution.documentType</b></li>
+    </ul>
+</li>
+<li>Repository Item Reference:
+    <ul style="list-style-type:none;">
+        <li>Document Link: <b>$document.repositoryItemRef.link</b></li>
+        <li>Document Title: <b>$document.repositoryItemRef.title</b></li>
+    </ul>
+</li>
+<li>Attachment info:
+    <ul style="list-style-type:none;">
+        <li>Location: <b>$document.attachmentLocation</b></li>
+        <li>Content ID: <b>$document.getAttachmentCid()</b></li>
+    </ul>
+</li>
+
+#end

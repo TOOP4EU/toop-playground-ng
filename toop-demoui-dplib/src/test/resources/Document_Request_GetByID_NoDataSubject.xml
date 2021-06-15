@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This work is protected under copyrights held by the members of the
+    TOOP Project Consortium as indicated at
+    http://wiki.ds.unipi.gr/display/TOOP/Contributors
+    (c) 2018-2021. All rights reserved.
+
+    This work is licensed under the EUPL 1.2.
+
+     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+    Licensed under the EUPL, Version 1.2 or – as soon they will be approved
+    by the European Commission - subsequent versions of the EUPL
+    (the "Licence");
+    You may not use this work except in compliance with the Licence.
+    You may obtain a copy of the Licence at:
+
+            https://joinup.ec.europa.eu/software/page/eupl
+
+-->
+<!--
+        QueryRequest message type based on the OASIS ebXML OASIS ebXML RegRep Version 4.0
+        Part 2: Services and Protocols (ebRS) OASIS Standard.
+        
+        Specification, schemas, samples etc. available from OASIS:
+        http://docs.oasis-open.org/regrep/regrep-core/v4.0/os/
+        
+        This sample is based on the version of the ebRS v4.0 standard, 
+        as well as ISA2 XML schemas for core vocabularies.     
+    -->
+
+<query:QueryRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:4.0"
+    xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:4.0"
+    xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:4.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:toop="urn:oasis:names:tc:ebxml-regrep:xsd:rim:4.0:toop"
+    id="d5569c4d-740e-4b64-80f0-7b209a66d629">
+    
+    <!-- SPECIFICATION IDENTIFIER -->
+    <rim:Slot name="SpecificationIdentifier">
+        <rim:SlotValue xsi:type="rim:StringValueType">
+            <rim:Value>toop-edm:v2.1</rim:Value>
+        </rim:SlotValue>
+    </rim:Slot>
+      
+    <!-- ISSUE DATE / TIME  -->
+    <rim:Slot name="IssueDateTime">
+        <rim:SlotValue xsi:type="rim:DateTimeValueType">
+            <rim:Value>2020-02-14T19:20:30+01:00</rim:Value>
+        </rim:SlotValue>
+    </rim:Slot>
+    
+    
+   <!--  REQUEST REASON: Procedure -->
+    <rim:Slot name="Procedure">
+        <rim:SlotValue xsi:type="rim:InternationalStringValueType">
+            <rim:Value>
+                <rim:LocalizedString
+                    value="Retrieve META data for ship certificate"
+                    xml:lang="en-US"/>
+            </rim:Value>
+        </rim:SlotValue>
+    </rim:Slot>
+    
+    <rim:Slot name="DataConsumer">
+        <!--   Expression of DC information using Agent class of CAGV   -->
+        <rim:SlotValue xsi:type="rim:AnyValueType">
+            <cagv:Agent xmlns:cagv="https://semic.org/sa/cv/cagv/agent-2.0.0#"
+                xmlns:cbc="https://data.europe.eu/semanticassets/ns/cv/common/cbc_v2.0.0#"
+                xmlns:locn="http://www.w3.org/ns/locn#">
+                <cbc:id schemeID="VAT">SVU12345678</cbc:id>
+                <cbc:name>Maritime Authority - Port Control</cbc:name>
+                <cagv:location>
+                    <locn:address>
+                        <locn:fullAddress>4220 Korsør, Denmark</locn:fullAddress>
+                        <locn:thoroughfare>Fjordvænget 30</locn:thoroughfare>
+                        <locn:locatorDesignator>30</locn:locatorDesignator>
+                        <locn:postName>Korsør</locn:postName>
+                        <locn:adminUnitLevel1>DK</locn:adminUnitLevel1>
+                        <locn:postCode>4220</locn:postCode>
+                    </locn:address>
+                </cagv:location>
+            </cagv:Agent>    
+        </rim:SlotValue>
+    </rim:Slot>
+    
+    <!--    Authorization token renamed to ConsentToken -->
+    <rim:Slot name="ConsentToken">
+        <rim:SlotValue xsi:type="rim:StringValueType">
+            <rim:Value>MTExMDEwMTAxMDEwMTAwMDExMTAxMDE=</rim:Value>
+        </rim:SlotValue>
+    </rim:Slot>
+    
+    <!--  DataSet Identifier  -->
+    <rim:Slot name="DatasetIdentifier">
+        <rim:SlotValue xsi:type="rim:StringValueType">
+            <rim:Value>DATASETIDENTIFIER</rim:Value>
+        </rim:SlotValue>
+    </rim:Slot>
+    
+    <query:ResponseOption returnType="LeafClassWithRepositoryItem"/>
+
+    <!-- 
+        Canonical query GetObjectByID 
+        Should do one Request per dataset ID as required
+    -->
+    <query:Query queryDefinition="urn:oasis:names:tc:ebxml-regrep:query:GetObjectById">
+        <rim:Slot name="id">
+            <rim:SlotValue xsi:type="rim:StringValueType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <rim:Value>f44f1971-5e92-4704-acf7-16668709af4f</rim:Value>
+            </rim:SlotValue>
+        </rim:Slot>
+    </query:Query>
+   
+</query:QueryRequest>
